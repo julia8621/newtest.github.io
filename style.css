@@ -1,0 +1,821 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 定义版心w */
+.w {
+    width: 1200px;
+    margin: auto;
+}
+
+body {
+    background-color: #f3f5f7;
+    /* 此处的height是在写代码期间用来滚动页面的 */
+    /* height: 3000px; */
+}
+
+li {
+    /* 清除无序列表前的小圆点 */
+    list-style:none;
+}
+
+a {
+    /* 去掉a的下划线 */
+    text-decoration: none;
+}
+
+.clearfix:before, .clearfix:after {
+    content:"";
+    display: table;
+}
+
+.clearfix:after {
+    clear:both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* 头部区域 */
+.header {
+    height: 42px;
+    /* background-color: pink; */
+    /* header有两个类，这里会层叠w里面的margin，所以左右也写auto。 */
+    margin:30px auto;
+}
+
+.logo {
+    /* 设置高度和宽度 */
+    float:left;
+    width: 198px;
+    height: 42px;
+    /* background-color: rgb(110, 83, 207); */
+}
+.nav {
+    float:left;
+    margin-left:60px;
+}
+
+.nav ul li {
+    float:left;
+    /* 每个li中间的间隔margin */
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    /* 把a转换为可以浮动的块级元素 */
+    display:block;
+    height: 42px;
+    /* 字数不同，不能给出一样的宽度，用padding来撑开,上下不撑开，左右撑开 */
+    padding: 0 10px;    
+    line-height:42px;
+    font-size:18px;    
+    color:#050505;       
+}
+
+.nav ul li a:hover{
+    /* 鼠标经过时有下划线，可以用下边框来制作 */
+    border-bottom: 2px solid #00a4ff;
+    color: #00a4ff;
+}
+
+.search {
+    float:left;
+    width: 412px;
+    height: 42px;
+    margin-left:50px;
+    /* background-color: rgb(38, 161, 114); */
+}
+
+.search input {
+    /* input是行内块元素 */
+    float:left;
+    /* 文本框的总宽度时360px,padding-left内边框用去了30px */
+    width: 330px;
+    /* 因为有边框，所以高度减去了border值 */
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: 0;
+    font-size: 14px;
+    color:#a8a5a5;
+    /* background-color: rgb(191, 191, 191); */
+    padding-left: 30px; 
+}
+
+.search button {
+    /* button是块元素，与input放一起会产生边框，使得button被挤出父级search的范围。所以用float消除两个块之间的边框。 */
+    float:left;
+    width: 50px;
+    height: 42px;
+    /* button标签自带边框，需要去掉 */
+    border: 0;
+    /* 加入按钮图片,background可以包括所有的背景设置 */
+    background:url(images/button.png);
+}
+
+/* 这里不能加上.search，因为会继承search，降低这个user的权重 */
+.user {
+    float: left;
+    line-height: 42px;
+    margin-left: 30px;
+    /* padding-right: 20px; */
+    font-size: 14px;
+    color: #666;    
+}
+/* 需要单独把样式加在img上 */
+.user img {
+    vertical-align: middle;
+}
+
+/* banner区域 */
+.banner {
+    height: 420px;
+    background-color: #1c036c;
+}
+
+.banner .w {
+    height: 420px;
+    /* banner内版心的背景放在样式表里，而非html。html是放结构的 */
+    /* background简写：地址 平铺与否 位置 */
+    background: url(images/banner-bgc.png) no-repeat top left;
+}
+
+.subnav {
+    float:left;
+    width: 190px;
+    height: 420px;
+    background:rgba(0,0,0,.3);
+}
+
+.subnav ul li {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+.subnav ul li a {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.subnav ul li a span {
+    float: right;
+}
+
+.subnav ul li a:hover {
+    color:#00a4ff;
+}
+
+.course {
+    float: right;
+    width: 228px;
+    height: 300px;
+    background-color: white;
+    /* 浮动的盒子不会有外边距塌陷的问题 */
+    margin:50px auto;
+}
+
+.course h3 {
+    height: 48px;
+    background-color: #00a4ff;
+    line-height: 48px;    
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
+.bd {
+    padding: 0 20px;
+}
+
+.bd ul li {
+    /* 使用padding来挤开盒子 */
+    padding: 14px 0;
+    border-bottom: 1px solid #a5a5a5;
+}
+
+.bd ul li h4 {
+    font-size: 16px;
+    color:#4e4e4e;
+}
+
+.bd ul li p {
+    font-size: 12px;
+    color:#a5a5a5;
+}
+
+.bd .more {
+    /* a为行内元素，必须转成块元素 */
+    display: block;
+    height: 40px;
+    margin-top: 5px;
+    border: 1px solid #00a4ff;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #00a4ff;
+}
+
+/* 精品推荐模块 */
+.goods {
+    height: 60px;
+    margin-top: 10px;
+    /* 盒子里所有的盒子都是居中，所以加在父级里 */
+    line-height: 60px;
+    /* 盒子阴影 */
+    box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+}
+
+.goods h3 {
+    float:left;
+    /* 用margin里代替自己测量盒子的宽度 */
+    margin-left: 30px;       
+    font-size: 16px;
+    color: #00a4ff;
+    text-align: center;
+}
+
+.goods-item {
+    float: left;
+    margin-left: 30px;
+}
+
+.goods-item li {
+    float: left;         
+}
+
+.goods-item li a {    
+    /* a链接单独设置样式    */
+    padding: 0 30px;
+    font-size: 16px;
+    color: #050505;
+    border-left: 1px solid #a5a5a5;
+}
+
+.mod {
+    float: right;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #00a4ff;
+}
+
+/* 精品推荐大模块 */
+.box {
+    /* 这里不能设置高度,因为可能会有更多的内容在后期会加进来,需要用到双伪元素清除浮动 */
+    /* height: 630px;     */
+    margin-top: 30px;
+    /* background-color:pink; */
+}
+.box-hd {
+    height: 45px;
+}
+
+.box-hd h3 {
+    float:left;    
+    font-size:20px;
+    font-weight: 400;
+    color: #494949;
+}
+.box-hd a {
+    float:right;
+    line-height: 45px;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;    
+}
+
+/* 小Li的外边距超过了版心，可以在ul里加上宽度 */
+.box-bd ul {
+    width: 1225px;
+}
+
+.box-bd ul li {
+    /* 子绝父相的父相 */
+    position: relative;
+    float:left;
+    width: 228px;
+    height: 270px;
+    margin-right: 15px;
+    margin-bottom:15px;
+    background-color: white;
+}
+.box-bd ul li em {
+    /* 子绝父相的子绝 */
+    position: absolute;
+    top: 4px;;
+    right: -4px;;
+}
+
+.box-bd ul li h4 {
+    float:left;
+    margin: 20px 22px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.box-bd ul li > img {
+    float:left;
+        /* 图片设置为100%，强制与父级相同宽度 */
+    width: 100%;    
+}
+
+.box-bd ul li .info {
+    float:left;
+    margin: 0 22px 0 25px;
+    font-size: 12px;
+    color:#999;
+}
+
+.box-bd ul li .info span {
+    float:left;
+    color: #ff7c2d;
+}
+
+/* 鼠标放上去会有阴影 */
+.box-bd ul li:hover {
+    box-shadow: 5px 5px 2px rgba(0,0,0,.1);
+}
+
+/* 编程入门模块 */
+.program {
+    height:450px;
+    margin-top: 30px;
+}
+
+.program-hd {
+    height: 45px;
+}
+
+.program-hd h3{
+    float: left;    
+    font-size: 20px;
+    font-weight: 400;
+    color: #494949;
+}
+
+.program-hd ul {
+    float: left;
+    margin-left: 354px;
+}
+
+.program-hd ul li {
+    float:left;
+    margin-right: 73px;
+    font-size: 16px;
+    color: #868686;
+}
+
+.program-hd ul li:hover{
+    color: #00a4ff;
+}
+
+.program-hd a {
+    float: right;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+.program-bd {
+    width: 1215px;
+}
+.program-bd-left {
+    float: left;
+    width: 230px;
+    height: 394px;
+    background: url(images/program-bd-left.png) no-repeat top left;
+}
+
+.program-bd-left h1 {
+    float:left;
+    margin-top: 45px;
+    margin-left: 35px;
+    font-size: 18px;
+    color: #fff;
+}
+.program-bd-left ul {
+    float: left;
+    margin: 45px 0 0 35px;
+}
+
+.program-bd-left ul li {
+    float: left;
+    margin-bottom: 60px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.program-bd-right  {
+    float: left;
+    width: 985px;
+    height: 394px;   
+}    
+
+.program-bd-right .pic {
+    display:block;    
+    float: left;
+    margin-left: 14px;
+}
+
+.program-bd-right-bottom {
+    float: left;
+    margin-top:23px;    
+}
+
+.program-bd-right-bottom ul {
+        float:left; 
+        width: 980px;
+        margin-left: 14px;
+}
+
+.program-bd-right-bottom ul li {
+    float: left;
+    margin-right: 15px;
+    width: 228px;
+    height: 270px;
+    background-color: #fff;    
+}
+
+.program-bd-right-bottom ul li:hover {
+    box-shadow: 5px 5px 2px rgba(0,0,0,.1)
+}
+
+.program-bd-right-bottom ul li img {
+    width: 100%;    
+}
+
+.program-bd-right-bottom ul li h4 {
+    float:left;    
+    margin: 25px 20px 20px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.program-bd-right-bottom ul li p {
+    float: left;
+    margin-left: 25px;
+    font-size: 12px;
+    color: #999;    
+}
+
+.program-bd-right-bottom ul li p span {
+    color: #ff7c2d;
+}
+
+/* 数据分析师模块 */
+.data {
+    height: 450px;
+    margin-top: 30px;
+}
+
+.data-hd {
+    height: 45px;    
+}
+
+.data-hd H3 {
+    float: left;
+    font-size: 20px;
+    font-weight: 400;
+    color: #494949;
+}
+
+.data-hd ul {
+    float: left;
+    margin-top: 5px;
+    margin-left: 330px;
+}
+
+.data-hd ul li {
+    float: left;
+    margin-right: 70px;
+    font-size: 16px;
+    color: #868686;
+}
+
+.data-hd ul li:hover {
+    color: #00a4ff;
+}
+
+.data-hd a {
+    float: right;
+    margin-top: 10px;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.data-bd {
+    width: 1215px;  
+    background-color:pink;
+}
+
+.data-bd-left {
+    float: left;
+    width: 230px;
+    height: 394px;
+    background: url(images/data-bd-left.png) no-repeat top left;
+}
+
+.data-bd-left h1 {
+    float: left;
+    margin: 48px 0 0 35px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.data-bd-left ul {
+    float: left;
+    margin: 55px 0 0 35px;    
+}
+
+.data-bd-left ul li {
+    float: left;
+    margin-bottom: 60px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.data-bd-right {
+    float: left;
+    width: 970px;
+    height: 394px;
+}
+
+.data-bd-right .pic {
+    display: block;    
+    float: left;
+    margin-left: 14px;
+}
+
+.data-bd-right-bottom {
+    float: left;
+    margin-top: 22px;
+}
+
+.data-bd-right-bottom ul {
+    float: left;
+    width: 970px; 
+}
+
+.data-bd-right-bottom ul li {
+    float:left;
+    width: 228px;
+    height: 270px;
+    margin-left: 14px;
+    background-color: #fff;
+}
+
+.data-bd-right-bottom ul li img {
+    float: left;
+    width: 100%
+}
+
+.data-bd-right-bottom ul li h4 {
+    float: left;    
+    margin: 25px 0 0 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+
+.data-bd-right-bottom ul li p {
+    float: left;
+    margin-top: 40px;
+    margin-left: 25px;
+    font-size: 12px;
+    color:#999999;
+}
+
+.data-bd-right-bottom ul li span {
+    color:#ff7c2d;
+}
+
+.data-bd-right-bottom ul li:hover {
+    box-shadow: 5px 5px 2px rgba(0,0,0,.1)
+}
+
+/* 机器学习区域 */
+.machine {
+    margin-top: 40px;
+}
+
+.machine-hd {
+    height: 40px;    
+}
+
+.machine-hd h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+    font-weight: 400;
+}
+
+.machine-hd ul {
+    float: left;
+    margin-top : 5px;
+    margin-left: 290px;    
+}
+
+.machine-hd ul li {
+    float: left;
+    margin-right: 70px;
+    font-size: 16px;
+    color: #868686;
+}
+
+.machine-hd ul li:hover {
+    color: #00a4ff;
+}
+
+.machine-hd a {
+    float: right;
+    margin-top: 5px;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.machine-bd {
+    height: 270px;
+}
+
+.machine-bd ul {
+    width: 1225px;      
+    background-color: pink;
+}
+
+.machine-bd ul li {
+    float: left;
+    width: 228px;
+    height: 270px;
+    margin-right: 14px;    
+    background-color: #fff;    
+}
+
+.machine-bd ul li img {
+    float: left;
+    width: 100%;
+}
+
+.machine-bd ul li h4 {
+    float: left;
+    margin: 25px 20px 20px 25px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #050505;
+}
+
+.machine-bd ul li p {
+    float: left;
+    margin-left: 25px;
+    font-size: 12px;
+    color: #999;
+}
+
+.machine-bd ul li span {
+    color: #ff7c2d;
+}
+
+.machine-bd ul li:hover {
+    box-shadow: 5px 5px 2px rgba(0,0,0,.1);
+}
+
+/* 前端开发工程师模块 */
+.front {
+    margin-top: 40px;
+}
+
+.front-hd {
+    height: 45px;
+}
+
+.front-hd h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+    font-weight: 400;   
+}
+
+.front-hd ul {
+    float: left;
+    margin-left: 292px;
+}
+
+.front-hd ul li {
+    float: left;
+    margin: 5px 70px 0 0;
+    font-size: 16px;
+    color: #868686;    
+}
+
+.front-hd ul li:hover {
+    color: #00a4ff;
+}
+
+.front-hd a {
+    float: right;
+    margin-top: 10px;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.front-bd {
+    width: 1225px;
+    height: 270px;
+    margin-bottom: 40px;    
+}
+
+.front-bd ul li {
+    float: left;
+    margin-right: 15px;
+    width: 228px;
+    height: 270px;
+    background-color: #fff;
+}
+
+.front-bd ul li img {
+    float: left;
+    width: 100%;
+}
+
+.front-bd ul li h4 {
+    float: left;
+    margin: 25px 27px 40px 25px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400; 
+}
+
+.front-bd ul li p {
+    float: left;
+    margin-left: 25px;
+    font-size: 12px;
+    color: #999;
+}
+
+.front-bd ul li span {
+    color: #ff7c2d;
+}
+
+
+/* 底部区域 */
+.footer {    
+    height: 415px;
+    background-color: #fff;
+    /* margin: auto; */
+}
+
+.footer .w {
+    /* 这里用margin会造成外边距塌陷(合并),所以用padding */
+    padding-top: 35px;    
+}
+
+.footer .copyright {
+    float: left;
+    margin-left: 22px;    
+}
+
+.copyright p {
+    margin: 25px 0 20px 0;
+    font-size:12px;
+    color:#666666;
+}
+
+.copyright .app {
+    display: block;
+    width: 122px;
+    height: 38px;
+    border: 1px solid #00a4ff;
+    font-size: 16px;
+    color: #00a4ff;
+    line-height: 38px;
+    text-align: center;
+}
+
+.footer .links {
+    float: right;
+    margin-right: 30px;       
+}
+
+.footer dl {
+    float: left;
+    margin-left: 100px;
+}
+
+.links dl dt {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333
+}
+.links dl dd a {
+    font-size: 12px;
+    color: #333;
+}
+
