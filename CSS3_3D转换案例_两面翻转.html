@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两面翻转的盒子</title>
+    <style>
+        /* 翻转的是box盒子 */
+        /* 思路：两个重叠的盒子，先把背面的盒子翻转180度；Y轴旋转整个盒子。 */
+        /* 添加3D的呈现 transform-style */
+        body {
+            /* 父级盒子添加透视样式，使得盒子转换时有透视效果 */
+            perspective: 400px;
+        }
+
+        .box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: rgb(168, 161, 161);
+            transition: all .6s;
+            /* 让子盒子保持3D空间 */
+            transform-style: preserve-3d;
+        }
+
+        .box:hover {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+            color: #fff;
+            border-radius: 50%;
+        }
+
+        .front {
+            background-color: pink;
+            /* 定位叠放次序 */
+            z-index: 1;
+        }
+
+        .back {
+            background-color: skyblue;
+            /* 把back先旋转180度，转到后面 */
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="front">睡什么睡！</div>
+        <div class="back">起来嗨！</div>
+    </div>
+</body>
+
+</html>
